@@ -1,5 +1,8 @@
 <template>
   <div class="order-container">
+    <div class="order-title">
+      今天吃什么 小阿伟不要再问我
+    </div>
     <div class="turntable">
       <div class="turn line1">
         <div
@@ -41,6 +44,9 @@
           {{ cd.name }} line4
         </div>
       </div>
+    </div>
+    <div class="order-btn-wrapper">
+      <a-button type='primary'>点我随机</a-button>
     </div>
   </div>
 </template>
