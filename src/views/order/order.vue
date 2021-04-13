@@ -1,7 +1,7 @@
 <template>
   <div class="order-container">
     <div class="order-title">
-      今天吃什么 小阿伟不要再问我
+      <!-- 今天吃什么 小阿伟不要再问我 -->
     </div>
     <div class="turntable">
       <div class="turn line1">
@@ -46,48 +46,33 @@
       </div>
     </div>
     <div class="order-btn-wrapper">
-      <a-button type='primary'>点我随机</a-button>
+      <a-button type='primary' @click='handleSetInterval'>点我随机</a-button>
     </div>
-    test Github Action
+    <!-- test Github Action -->
   </div>
 </template>
 
 <script>
-import { reactive, createApp, ref } from "vue";
+import { reactive, createApp, ref, watch } from "vue";
+import useActiveKey from './useActiveKey'
+import { dishMenu } from '@/utils/const'
 export default {
   setup(props) {
-    const activeKey = ref(0);
-    const cards = [
-      { key: 1, name: "麻辣香锅" },
-      { key: 2, name: "小酥肉" },
-      { key: 3, name: "辣椒炒肉" },
-      { key: 4, name: "麻辣香锅" },
-      { key: 5, name: "麻辣香锅" },
-      { key: 6, name: "麻辣香锅" },
-      { key: 7, name: "麻辣香锅" },
-      { key: 8, name: "麻辣香锅" },
-      { key: 9, name: "麻辣香锅" },
-      { key: 10, name: "麻辣香锅" },
-      { key: 11, name: "麻辣香锅" },
-      { key: 12, name: "麻辣香锅" },
-      { key: 13, name: "麻辣香锅" },
-      { key: 14, name: "麻辣香锅" },
-      { key: 15, name: "麻辣香锅" },
-      { key: 16, name: "麻辣香锅" },
-    ];
+    // const activeKey = ref(0);
+    const cards = dishMenu;
     const cardPart1 = cards.slice(0, 5);
     const cardPart2 = cards.slice(5, 9);
     const cardPart3 = cards.slice(9, 13);
     const cardPart4 = cards.slice(13, 16);
-    setInterval(() => {
-      if (activeKey.value === cards.length) {
-        activeKey.value = 1;
-      } else {
-        activeKey.value += 1;
-      }
-    }, 200);
+    const { activeKey, finishTimes, handleSetInterval } = useActiveKey(cards.length)
+
+    // watch(() => finishTimes, (val, oldVal) => {
+    //   console.log(val, oldVal)
+    // })
+
     return {
       activeKey,
+      handleSetInterval,
       cardPart1,
       cardPart2,
       cardPart3,
