@@ -48,6 +48,7 @@
     <div class="order-btn-wrapper">
       <a-button type='primary'>点我随机</a-button>
     </div>
+    test Github Action
   </div>
 </template>
 
