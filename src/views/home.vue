@@ -3,9 +3,12 @@
 </template>
 
 <script setup>
-import { createApp } from 'vue'
+import { defineComponent } from 'vue'
 import HelloWorld from '@/components/HelloWorld.vue'
-createApp({
+import router from '@/router'
+// console.log(router)
+router.push('/order')
+defineComponent({
   components: {
     HelloWorld,
   }

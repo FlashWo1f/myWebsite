@@ -5,16 +5,16 @@
     </div>
     <div class="mid-img">
       <div class='img-item'>
-        <img src="../assets/1.jpg" alt="">
+        <!-- <img src="../assets/1.jpg" alt=""> -->
       </div>
       <div class='img-item'>
-        <img src="../assets/2.jpg" alt="">
+        <!-- <img src="../assets/2.jpg" alt=""> -->
       </div>
       <div class='img-item'>
-        <img src="../assets/3.jpg" alt="">
+        <!-- <img src="../assets/3.jpg" alt=""> -->
       </div>
       <div class='img-item'>
-        <img src="../assets/4.jpg" alt="">
+        <!-- <img src="../assets/4.jpg" alt=""> -->
       </div>
     </div>
   </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="order-container">
     <div class="order-title">
-      <!-- 今天吃什么 小阿伟不要再问我 -->
+      今天吃什么 小阿伟不要再问我
     </div>
     <div class="turntable">
       <div class="turn line1">
