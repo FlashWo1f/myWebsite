@@ -1,5 +1,39 @@
 <template>
   <div class="home">
+    <!-- 月 -->
+    <div class="box-wrapper">
+      <div class="circle-box" :style="boxStyle('months', deg.monthsDeg)" ref="months">
+        <span
+          v-for="(item, index) in monthTexts"
+          :key="item"
+          :class="{'active': index === current.currentMonths - 1}"
+          :style="spanStyle(boxSize.months, monthTexts, index)"
+        >{{ item }}</span>
+        <i class="circle-dot"></i>
+      </div>
+    </div>
+    <!-- 日 -->
+    <div class="box-wrapper">
+      <div class="circle-box" :style="boxStyle('days', deg.daysDeg)" ref="days">
+        <span
+          v-for="(item, index) in dayTexts"
+          :key="item"
+          :class="{'active': index === current.currentDays - 1}"
+          :style="spanStyle(boxSize.days, dayTexts, index)"
+        >{{ item }}</span>
+      </div>
+    </div>
+    <!-- 小时 -->
+    <div class="box-wrapper">
+      <div class="circle-box" :style="boxStyle('hours', deg.hoursDeg)" ref="hours">
+        <span
+          v-for="(item, index) in hourTexts"
+          :key="item"
+          :class="{'active': index === current.currentHours - 1}"
+          :style="spanStyle(boxSize.hours, hourTexts, index)"
+        >{{ item }}</span>
+      </div>
+    </div>
     <!-- 分 -->
     <div class="box-wrapper">
       <div class="circle-box" :style="boxStyle('minutes', deg.minutesDeg)">
@@ -47,13 +81,33 @@ export default {
       '四十一分', '四十二分', '四十三分', '四十四分', '四十五分', '四十六分', '四十七分', '四十八分', '四十九分', '五十分',
       '五十一分', '五十二分', '五十三分', '五十四分', '五十五分', '五十六分', '五十七分', '五十八分', '五十九分'
     ]
+    const hourTexts = [
+      '一时', '二时', '三时', '四时', '五时', '六时', '七时', '八时', '九时', '十时', '十一时', '十二时',
+      '十三时', '十四时', '十五时', '十六时', '十七时', '十八时', '十九时', '二十时', '二十一时', '二十二时', '二十三时', '二十四时'
+    ]
+
+    const monthTexts = [
+      '一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'
+    ]
+    const dayTexts = [
+      '一日', '二日', '三日', '四日', '五日', '六日', '七日', '八日', '九日', '十日',
+      '十一日', '十二日', '十三日', '十四日', '十五日', '十六日', '十七日', '十八日', '十九日', '二十日', 
+      '二十一日', '二十二日', '二十三日', '二十四日', '二十五日', '二十六日', '二十七日', '二十八日', '二十九日', '三十日', , '三十一日'
+    ]
 
     const current = reactive({
+      currentYear: 0,
+      currentMonths: 0,
+      currentDays: 0,
+      currentHours: 0,
       currentMinutes: 0, // 当前-分钟
       currentSeconds: 0, // 当前-秒
     })
 
     const deg = reactive({
+      monthDeg: 0,
+      hoursDeg: 0,
+      daysDeg: 0,
       minutesDeg: 0, // 当前-分钟-转动角度
       secondsDeg: 0, // 当前-面-转动角度
     })
@@ -61,18 +115,32 @@ export default {
     const boxSize = {
       seconds: 580,
       minutes: 440,
+      hours: 320,
+      days: 180,
+      months: 80,
     }
 
     let timer = ref(null)
 
     function init() {
       const d = new Date()
+      const year = d.getFullYear() // 年
+      const month = d.getMonth() + 1 // 月
+      const day = d.getDate()
+      const hours = d.getHours() // 时
       const minutes = d.getMinutes() // 分
       const seconds = d.getSeconds() // 秒
       // 当前时间
+      current.currentYear = year
+      current.currentMonths = month
+      current.currentDays = day
+      current.currentHours = hours
       current.currentMinutes = minutes
       current.currentSeconds = seconds
       // 角度
+      deg.monthsDeg = (current.currentMonths - 1) * getPerDeg(monthTexts)
+      deg.daysDeg = (current.currentDays - 1) * getPerDeg(dayTexts)
+      deg.hoursDeg = (current.currentHours - 1) * getPerDeg(hourTexts)
       deg.minutesDeg = current.currentMinutes * getPerDeg(minuteTexts)
       deg.secondsDeg = current.currentSeconds * getPerDeg(secondTexts)
       // 设置定时器
@@ -85,15 +153,34 @@ export default {
 
     function runClock() {
       const d = new Date()
+      const year = d.getFullYear() // 年
+      const month = d.getMonth() + 1 // 月
       const hours = d.getHours() // 时
+      const day = d.getDate() // 日
+      // console.log('@@@@', hours)
       const minutes = d.getMinutes() // 分
       const seconds = d.getSeconds() // 秒
+      if (current.currentYear !== year) {
+        current.currentYear = year
+      }
+      if (current.currentMonths !== month) {
+        current.currentMonths = month
+        deg.monthDeg += getPerDeg(monthTexts)
+      }
+      if (current.currentDays !== day) {
+        current.currentDays = day
+        deg.daysDeg += getPerDeg(dayTexts)
+      }
+      if (current.currentHours !== hours) {
+        current.currentHours = hours
+        deg.hoursDeg += getPerDeg(hourTexts)
+      }
       if (current.currentMinutes !== minutes) {
         current.currentMinutes = minutes
         deg.minutesDeg += getPerDeg(minuteTexts)
       }
-      current.currentSeconds = seconds
-      deg.secondsDeg += getPerDeg(secondTexts)
+        current.currentSeconds = seconds
+        deg.secondsDeg += getPerDeg(secondTexts)
     }
 
     function boxStyle(key, deg) {
@@ -142,6 +229,9 @@ export default {
       boxSize,
       current,
       deg,
+      hourTexts,
+      dayTexts,
+      monthTexts,
       minuteTexts,
       boxStyle,
       spanStyle,
