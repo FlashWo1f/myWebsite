@@ -1,0 +1,40 @@
+.home {
+  height: 100vh;
+  width: 100vw;
+  background-color: #000000;
+  color: #71767D;
+  position: relative;
+  min-width: 800px;
+  min-height: 660px;
+  padding: 20px 0;
+  overflow: hidden;
+}
+
+.box-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.circle-box {
+  position: relative;
+}
+
+.circle-box span {
+  white-space: nowrap;
+  font-size: 14px;
+  position: absolute;
+}
+
+.circle-box {
+  position: relative;
+  // 添加动画效果
+  transition: transform 0.4s ease-in-out;
+}
+
+// 激活时文字颜色为白色
+.circle-box span.active {
+  color: #fff;
+}
+
