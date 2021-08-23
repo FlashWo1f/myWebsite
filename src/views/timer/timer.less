@@ -8,6 +8,30 @@
   min-height: 660px;
   padding: 20px 0;
   overflow: hidden;
+  display: flex;
+}
+
+.time-left {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  flex: 1;
+}
+
+.time-right {
+  width: 300px;
+  padding-top: 100px;
+  .time-right-inner {
+      color: #fff;
+      .right-inner__title {
+        margin-bottom: 32px;
+        font-size: 32px;
+      }
+      .right-inner__text {
+        margin-top: 72px;
+        font-size: 72px;
+    }
+  }
 }
 
 .box-wrapper {

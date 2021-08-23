@@ -7,6 +7,7 @@ const router = createRouter({
     { path: '/order', component: () => import('@/views/order/order.vue') },
     { path: '/timer', component: () => import('@/views/timer/timer.vue') },
     { path: '/todo', component: () => import('@/views/todolist/index.vue') },
+    { path: '/count', component: () => import('@/views/count/Count.vue') },
   ]
 });
 

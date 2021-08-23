@@ -29,6 +29,7 @@ export default {
       { name: "吃什么", url: "/order" },
       { name: "时间罗盘", url: "/timer" },
       { name: "todo", url: "/todo" },
+      { name: "倒计时", url: "/count" },
     ]
     let checked = ref(false)
     return {
