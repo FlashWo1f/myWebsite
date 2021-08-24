@@ -9,8 +9,8 @@
 
 <script>
 import { ref } from "vue";
+import { generateID, showMessage } from '@/utils/util'
 export default {
-  props: ["tid"],
   setup(props, context) {
     return useEmitAddTodo(props.tid, context.emit);
   },
@@ -19,8 +19,9 @@ export default {
 function useEmitAddTodo(tid, emit) {
   const todoContent = ref("");
   const emitAddTodo = () => {
+    if (!todoContent.value) return showMessage('warn', '写几个字儿吧')
     const todo = {
-      id: tid,
+      id: generateID(),
       content: todoContent.value,
       completed: false,
     };
