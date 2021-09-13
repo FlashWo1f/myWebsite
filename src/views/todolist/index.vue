@@ -16,9 +16,6 @@ import TodoList from './TodoList.vue'
 import useFilteredTodos from './useFilteredTodos'
 import useTodos from './useTodos'
 export default {
-  setup(props, context) {
-    console.log(context)
-  },
   setup() {
     const { todos, addTodo } = useTodos();
     const { filter, filteredTodos } = useFilteredTodos(todos);

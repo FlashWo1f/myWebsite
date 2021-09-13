@@ -1,5 +1,6 @@
 <template>
   <div class="todo-list">
+    <!-- {{ JSON.stringify(todo12312s) }} -->
     <TodoListItem
       v-for="todo in todos"
       :key="todo.id"
@@ -16,7 +17,6 @@ export default {
   components: {
     TodoListItem,
   },
-  props: ["todos"],
   setup(props) {
     const { todos } = props
 
@@ -27,6 +27,7 @@ export default {
     }
     return {
       setTodoState,
+      todos
     }
   }
 }

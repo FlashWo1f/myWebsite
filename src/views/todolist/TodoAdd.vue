@@ -22,7 +22,7 @@ function useEmitAddTodo(tid, emit) {
     if (!todoContent.value) return showMessage('warn', '写几个字儿吧')
     const todo = {
       id: generateID(),
-      content: todoContent.value,
+      content: todoContent.value.trim(),
       completed: false,
     };
     emit("add-todo", todo);
