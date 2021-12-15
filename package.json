@@ -2,9 +2,9 @@
   "name": "moxianbao",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
-    "serve": "vite preview"
+    "preview": "vite preview"
   },
   "homepage": "http://8.136.158.41",
   "dependencies": {
