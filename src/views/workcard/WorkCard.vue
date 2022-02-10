@@ -73,6 +73,18 @@
                 <a-input v-model:value="info.position" />
               </div>
             </div>
+            <div class="wc-operate-item">
+              <div class="wc-operate-item__label">照片:</div>
+              <div class="wc-operate-item__value">
+                <input type="file" accept="image/*" @change="loadFile" />
+              </div>
+            </div>
+            <div class="wc-operate-item">
+              <div class="wc-operate-item__label">位置:</div>
+              <div class="wc-operate-item__value">
+                <!-- <input v-model:value='' /> -->
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -110,7 +122,6 @@
         </div>
       </div>
     </div>
-    <input type="file" accept="image/*" @change="loadFile" />
   </div>
 </template>
 
@@ -134,6 +145,11 @@ export default {
       info: {
         name: '钱老板',
         position: '创始人',
+      },
+      // 图片的位置
+      imgPosition: {
+        x: '',
+        y: '',
       },
     })
 
