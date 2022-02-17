@@ -1,4 +1,4 @@
-import { ref, computed, ComputedRef, unref } from 'vue'
+import { ref, computed, unref } from 'vue'
 import { useEventListener } from '@/hooks/event/useEventListener'
 
 const sizeEnum = {

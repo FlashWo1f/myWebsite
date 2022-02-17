@@ -9,6 +9,17 @@ const router = createRouter({
     { path: '/timer', component: () => import('@/views/timer/timer.vue') },
     { path: '/todo', component: () => import('@/views/todolist/index.vue') },
     { path: '/count', component: () => import('@/views/count/Count.vue') },
+    { 
+      path: '/echarts', 
+      component: () => import('@/views/echarts/index.vue'),
+      redirect: '/echarts/my-weight',
+      children: [
+        { 
+          path: 'my-weight', 
+          component: () => import('@/views/echarts/my-weight.vue'),
+        },
+      ],
+    },
   ]
 });
 
