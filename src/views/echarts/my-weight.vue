@@ -14,12 +14,11 @@ const { setOptions } = useECharts(weightWrapperRef);
 const weightMap = {
   "2-16": 149, // done
   "2-17": 148, // done
-  "2-18": 149,
-  "2-19": 153,
-  "2-20": 147,
-  "2-21": 150,
-  "2-22": 146,
-  "2-23": 142,
+  "2-18": 149, // done
+  "2-19": 150, // done
+  "2-20": 149, // done
+  "2-21": 149, // done
+  "5-8": 146, // done
 };
 setOptions({
   xAxis: {
