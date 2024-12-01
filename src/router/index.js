@@ -11,6 +11,7 @@ const router = createRouter({
     { path: '/count', component: () => import('@/views/count/Count.vue') },
     { path: '/workcard', component: () => import('@/views/workcard/WorkCard.vue') },
     { path: '/wallpaper', component: () => import('@/views/wallpaper/wallpaper.vue') },
+    { path: '/poke', component: () => import('@/views/poke/index.vue') },
     { 
       path: '/echarts', 
       component: () => import('@/views/echarts/index.vue'),
