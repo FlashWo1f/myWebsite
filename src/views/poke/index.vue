@@ -27,7 +27,6 @@
 					</a-list>
 				</a-card>
 			</a-col>
-
 			<!-- 右侧计分面板 -->
 			<a-col :span="18" class="main-panel">
 				<a-card title="记分板" :bordered="false" class="custom-card">
@@ -72,19 +71,20 @@
 						</a-form>
 					</div>
 				</a-card>
+
+				<!-- 添加历史对局概览 -->
+				<div class="history-games-overview">
+					<a-divider>历史对局记录</a-divider>
+					<a-table :dataSource="historyGamesData" :columns="historyColumns" :pagination="{ pageSize: 5 }" size="small">
+						<template #bodyCell="{ column, record }">
+							<template v-if="column.key === 'action'">
+								<a @click="showGameDetail(record)">查看详情</a>
+							</template>
+						</template>
+					</a-table>
+				</div>
 			</a-col>
 		</a-row>
-		<!-- 添加历史对局概览 -->
-		<div class="history-games-overview">
-			<a-divider>历史对局记录</a-divider>
-			<a-table :dataSource="historyGamesData" :columns="historyColumns" :pagination="{ pageSize: 5 }" size="small">
-				<template #bodyCell="{ column, record }">
-					<template v-if="column.key === 'action'">
-						<a @click="showGameDetail(record)">查看详情</a>
-					</template>
-				</template>
-			</a-table>
-		</div>
 	</div>
 	<!-- 添加详情弹窗 -->
 	<a-modal v-model:visible="detailModalVisible" title="对局详情" :footer="null" width="600px">
@@ -336,11 +336,11 @@ export default {
 <style scoped>
 .page-header {
 	text-align: center;
-	padding: 16px 0 24px;
+	padding: 4px 0 12px;
 }
 
 .page-header h1 {
-	font-size: 32px;
+	font-size: 48px;
 	font-weight: bold;
 	color: #d48806;
 	margin: 0;
